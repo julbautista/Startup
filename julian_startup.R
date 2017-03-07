@@ -1,8 +1,18 @@
 library(beepr)
 library(tidyverse)
 library(rstan)
+library(extrafont)
+library(extrafontdb)
 rstan_options(auto_write = TRUE)
 options(mc.cores = parallel::detectCores())
+
+#using the extrafont package I have installed all fonts onto R. Use function below if new font is installed. Second function to make fonts usable
+#font_import()
+loadfonts(device = "win")
+
+#finds ghostscript to embed fonts onto pdf. Ghost script must be installed
+Sys.setenv(R_GSCMD = "C:/Program Files/gs/gs9.20/bin/gswin64c.exe")
+
 
 #creating colour palette dictionary
 jbpal <- list(blue = "#678B99", green = "#A3C686", brown = "#997567", tan = "#998E67", red = "#996772")
@@ -21,9 +31,13 @@ jbplot <- theme_grey() +
         panel.grid.minor = element_blank(),
         
         #text
-        axis.text = element_text(colour = "grey"),
-        axis.title = element_text(colour = "dark grey"),
-        plot.title = element_text(hjust = 0.5, colour = "dark grey", face = "bold")
+        axis.text = element_text(colour = "grey", family = "Open Sans Light"),
+        axis.title = element_text(colour = "dark grey", family = "Open Sans Light"),
+        plot.title = element_text(hjust = 0.5, colour = "dark grey", family = "Open Sans"),
+        legend.text = element_text(colour = "dark grey", family = "Open Sans Light"),
+        
+        #legend
+        legend.key = element_blank()
   )
 
 #set scale colours to default
@@ -42,7 +56,7 @@ update_geom_defaults("abline", list(colour = jbpal$brown))
 update_geom_defaults("ribbon", list(fill = jbpal$blue, colour = NA))
 update_geom_defaults("errorbar", list(colour = jbpal$green, alpha = 0.5, width = 0.1))
 update_geom_defaults("errorbarh", list(colour = jbpal$green, alpha = 0.5, width = 0.1))
-update_geom_defaults("text", list(colour = jbpal$brown, alpha = 0.15))
+update_geom_defaults("text", list(colour = jbpal$brown, alpha = 0.15, family = "Open Sans Light"))
 update_geom_defaults("density", list(colour = jbpal$blue, alpha = 0.15))
 
 #create function to paste strings together
