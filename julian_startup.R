@@ -17,8 +17,9 @@ Sys.setenv(R_GSCMD = "C:/Program Files/gs/gs9.20/bin/gswin64c.exe")
 #creating colour palette dictionary
 jbpal <- list(blue = "#678B99", green = "#A3C686", brown = "#997567", tan = "#998E67", red = "#996772")
 
-#jbplot default theme
-jbplot <- theme_grey() +
+#set default theme
+theme_set(
+  theme_grey() +
   theme(plot.background = element_blank(),
         
         #axis lines
@@ -38,7 +39,15 @@ jbplot <- theme_grey() +
         
         #legend
         legend.key = element_blank()
-  )
+  ))
+
+#creating theme element for publication
+public <- theme(
+  axis.text = element_text(colour = "grey", family = "Open Sans Light", size = 10),
+  axis.title = element_text(colour = "dark grey", family = "Open Sans Light", size = 18),
+  plot.title = element_text(hjust = 0.5, colour = "dark grey", family = "Open Sans", size = 36),
+  legend.text = element_text(colour = "dark grey", family = "Open Sans Light", size = 14)
+)
 
 #set scale colours to default
 jbcol <- scale_colour_manual(values = unlist(jbpal,use.names = F))  
