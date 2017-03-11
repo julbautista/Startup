@@ -1,4 +1,5 @@
 library(beepr)
+library(gridExtra)
 library(tidyverse)
 library(rstan)
 library(extrafont)
@@ -33,10 +34,10 @@ theme_set(
         panel.grid.minor = element_blank(),
         
         #text
-        axis.text = element_text(colour = "grey", family = "Open Sans Light"),
-        axis.title = element_text(colour = "dark grey", family = "Open Sans Light"),
-        plot.title = element_text(hjust = 0.5, colour = "dark grey", family = "Open Sans"),
-        legend.text = element_text(colour = "dark grey", family = "Open Sans Light"),
+        axis.text = element_text(colour = "#BCBCBC", family = "Open Sans Light"),
+        axis.title = element_text(colour = "#222222", family = "Open Sans Light"),
+        plot.title = element_text(hjust = 0.5, colour = "#222222", family = "Open Sans"),
+        legend.text = element_text(colour = "#222222", family = "Open Sans Light"),
         
         #legend
         legend.key = element_blank()
@@ -44,10 +45,10 @@ theme_set(
 
 #creating theme element for publication
 public <- theme(
-  axis.text = element_text(colour = "grey", family = "Open Sans Light", size = 10),
-  axis.title = element_text(colour = "dark grey", family = "Open Sans Light", size = 18),
-  plot.title = element_text(hjust = 0.5, colour = "dark grey", family = "Open Sans", size = 36),
-  legend.text = element_text(colour = "dark grey", family = "Open Sans Light", size = 14)
+  axis.text = element_text(colour = "#BCBCBC", family = "Open Sans Light", size = 10),
+  axis.title = element_text(colour = "#222222", family = "Open Sans Light", size = 18),
+  plot.title = element_text(hjust = 0.5, colour = "#222222", family = "Open Sans", size = 36),
+  legend.text = element_text(colour = "#222222", family = "Open Sans Light", size = 14)
 )
 
 #set scale colours to default
@@ -67,9 +68,9 @@ update_geom_defaults("ribbon", list(fill = jbpal$blue, colour = NA))
 update_geom_defaults("errorbar", list(colour = jbpal$green, alpha = 0.5, width = 0.1))
 update_geom_defaults("errorbarh", list(colour = jbpal$green, alpha = 0.5, width = 0.1))
 update_geom_defaults("text", list(colour = jbpal$brown, alpha = 0.6, family = "Open Sans Light"))
-update_geom_defaults("text_repel", list(colour = jbpal$brown, alpha = 0.6, family = "Open Sans Light"))
+update_geom_defaults("text_repel", list(colour = jbpal$brown, alpha = 0.6, family = "Open Sans Light", point.padding = unit(1, "lines") ))
 update_geom_defaults("label", list(colour = jbpal$brown, alpha = 0.6, family = "Open Sans Light"))
-update_geom_defaults("label_repel", list(colour = jbpal$brown, alpha = 0.6, family = "Open Sans Light"))
+update_geom_defaults("label_repel", list(colour = jbpal$brown, fill = NA, alpha = 0.6, family = "Open Sans Light", point.padding = unit(1, "lines") ))
 update_geom_defaults("density", list(colour = jbpal$blue, alpha = 0.15))
 
 #create function to paste strings together
