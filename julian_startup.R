@@ -34,7 +34,7 @@ theme_set(
         panel.grid.minor = element_blank(),
         
         #text
-        axis.text = element_text(colour = "#BCBCBC", family = "Open Sans Light"),
+        axis.text = element_text(colour = "#2f4f4f", family = "Open Sans Light"),
         axis.title = element_text(colour = "#222222", family = "Open Sans Light"),
         plot.title = element_text(hjust = 0.5, colour = "#222222", family = "Open Sans"),
         legend.text = element_text(colour = "#222222", family = "Open Sans Light"),
@@ -45,7 +45,7 @@ theme_set(
 
 #creating theme element for publication
 public <- theme(
-  axis.text = element_text(colour = "#BCBCBC", family = "Open Sans Light", size = 10),
+  axis.text = element_text(colour = "#2f4f4f", family = "Open Sans Light", size = 10),
   axis.title = element_text(colour = "#222222", family = "Open Sans Light", size = 18),
   plot.title = element_text(hjust = 0.5, colour = "#222222", family = "Open Sans", size = 36),
   legend.text = element_text(colour = "#222222", family = "Open Sans Light", size = 14)
