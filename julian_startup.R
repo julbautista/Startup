@@ -5,14 +5,19 @@ library(rstan)
 library(extrafont)
 library(extrafontdb)
 library(ggrepel)
+
+#To make Stan run faster
 rstan_options(auto_write = TRUE)
 options(mc.cores = parallel::detectCores())
+
+#To coerce tibbles to print all columns
+options(dplyr.width = Inf)
 
 #using the extrafont package I have installed all fonts onto R. Use function below if new font is installed. Second function to make fonts usable
 #font_import()
 loadfonts(device = "win")
 
-#finds ghostscript to embed fonts onto pdf. Ghost script must be installed
+#finds ghostscript to embed fonts onto pdf. Ghostscript must be installed
 Sys.setenv(R_GSCMD = "C:/Program Files/gs/gs9.20/bin/gswin64c.exe")
 
 
@@ -38,6 +43,11 @@ theme_set(
         axis.title = element_text(colour = "#222222", family = "Open Sans Light"),
         plot.title = element_text(hjust = 0.5, colour = "#222222", family = "Open Sans"),
         legend.text = element_text(colour = "#222222", family = "Open Sans Light"),
+        strip.text.x = element_text(colour = "#222222", family = "Open Sans Light"),
+        strip.text.y = element_text(colour = "#222222", family = "Open Sans Light"),
+        
+        #facets
+        strip.background = element_rect(colour="#BCBCBC", fill="#BCBCBC"),
         
         #legend
         legend.key = element_blank()
@@ -48,6 +58,8 @@ public <- theme(
   axis.text = element_text(colour = "#2f4f4f", family = "Open Sans Light", size = 10),
   axis.title = element_text(colour = "#222222", family = "Open Sans Light", size = 18),
   plot.title = element_text(hjust = 0.5, colour = "#222222", family = "Open Sans", size = 36),
+  strip.text.x = element_text(colour = "#222222", family = "Open Sans Light", size = 12),
+  strip.text.y = element_text(colour = "#222222", family = "Open Sans Light", size = 12),
   legend.text = element_text(colour = "#222222", family = "Open Sans Light", size = 14)
 )
 
@@ -122,3 +134,4 @@ multiplot <- function(..., plotlist=NULL, file, cols=1, layout=NULL) {
     }
   }
 }
+
